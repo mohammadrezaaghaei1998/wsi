@@ -1,0 +1,436 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<!-- <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WSI</title>
+    <meta name="description" content="Compression is a free kinetic portfolio HTML CSS template with CSS-only expanding panels, industrial dark theme, and modal popups.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head> -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>WSI | Creative Agency</title>
+
+    <meta name="description" content="WSI is a creative video production and digital marketing agency in Muscat, Oman. We create cinematic videos, brand films, social media content, and digital marketing solutions for businesses.">
+
+    <meta name="keywords" content="
+        video production Oman,
+        video production Muscat,
+        marketing agency Oman,
+        digital marketing Muscat,
+        creative agency Oman,
+        corporate video production Oman,
+        commercial video production Muscat,
+        social media marketing Oman,
+        branding agency Muscat,
+        content creation Oman,
+        photography and videography Oman,
+        WSI Oman
+    ">
+
+    <meta name="author" content="WSI">
+
+    <!-- Favicon / Logo -->
+    <link rel="icon" type="image/png" href="{% static 'images/logo.png' %}">
+    <link rel="apple-touch-icon" href="{% static 'images/logo2.png' %}">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+    <!-- Open Graph SEO -->
+    <meta property="og:title" content="WSI | Video Production & Digital Marketing Agency in Oman">
+    <meta property="og:description" content="Cinematic video production, branding, and digital marketing solutions based in Muscat, Oman.">
+    <meta property="og:image" content="{% static 'images/logo.png' %}">
+    <meta property="og:type" content="website">
+
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="WSI | Creative Video Production & Marketing Agency Oman">
+    <meta name="twitter:description" content="Premium video production and digital marketing services in Muscat, Oman.">
+    <meta name="twitter:image" content="{% static 'images/logo.png' %}">
+
+</head>
+
+
+
+<body>
+
+    <!-- Global Header -->
+    <header class="global-header">
+        <!-- <a href="#" class="logo">wsi<span>—</span>groupco</a> -->
+        <a href="#" class="logo">
+            <img src="{% static 'images/logo.png' %}" alt="WSI Logo">
+            <span class="logo-text">wsi</span>
+        </a>
+        <nav class="nav">
+            <a href="#work">Work</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- The Track -->
+    <main class="track" role="region" aria-label="Portfolio Projects">
+
+        {% for project in projects %}
+
+        <article class="panel">
+
+            <div class="panel__bg">
+                <img src="{{ project.image.url }}"
+                    alt="{{ project.image_alt }}"
+                    loading="{% if forloop.first %}eager{% else %}lazy{% endif %}">
+            </div>
+
+            <span class="panel__index">
+                {{ forloop.counter|stringformat:"02d" }} / {{ projects|length|stringformat:"02d" }}
+            </span>
+
+            <h2 class="spine">
+                {{ project.project_name }}
+            </h2>
+
+
+            <div class="details">
+
+                <p class="details__category">
+                    {{ project.category }}
+                </p>
+
+
+                <h3 class="details__title">
+                    {{ project.title_project_name|linebreaksbr }}
+                </h3>
+
+
+                <div class="details__meta">
+
+                    <div class="details__meta-item">
+                        <span class="details__meta-label">
+                            Client
+                        </span>
+
+                        <span class="details__meta-value">
+                            {{ project.client }}
+                        </span>
+                    </div>
+
+
+                    <div class="details__meta-item">
+                        <span class="details__meta-label">
+                            Year
+                        </span>
+
+                        <span class="details__meta-value">
+                            {{ project.year }}
+                        </span>
+                    </div>
+
+
+                    <div class="details__meta-item">
+                        <span class="details__meta-label">
+                            Role
+                        </span>
+
+                        <span class="details__meta-value">
+                            {{ project.role }}
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <p class="details__description">
+                    {{ project.description }}
+                </p>
+
+
+                <!-- <a href="#" class="btn-view">
+                    View Project
+
+                    <svg viewBox="0 0 14 14" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+
+                        <path d="M1 7h12M8 2l5 5-5 5"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                            stroke-linecap="square"/>
+
+                    </svg>
+
+                </a> -->
+
+
+            </div>
+
+        </article>
+
+
+        {% empty %}
+
+        <p>No projects available.</p>
+
+        {% endfor %}
+
+    </main>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Global Footer -->
+    <footer class="global-footer">
+        <p class="footer__credit"> <a href="" target="_blank" rel="nofollow">Wide Sky International Group Co</a> &copy; 2026</p>
+        <p class="footer__scroll-hint">Hover to Expand</p>
+    </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- ===========================================
+         MODALS — CSS-only via :target
+         =========================================== -->
+
+    <!-- Work Modal -->
+    <div id="work" class="modal-overlay">
+        <a href="#" class="modal__close" aria-label="Close">&times;</a>
+        <div class="modal__content">
+            <p class="modal__label">Partners</p>
+            <h2 class="modal__heading">Selected<br>Work</h2>
+            <p class="modal__text">A collection of collaborations, partnerships, and creative projects across branding, digital experiences, video production, and marketing. We work with ambitious brands to build identities, tell stories, and create digital solutions that leave a lasting impact.</p>
+            <hr class="modal__divider">
+            <ul class="modal__project-list">
+
+                <!-- <li>
+                    <span class="modal__project-name">
+                        <img src="{% static 'images/partners/1.png' %}" alt="Enterprise Logo">
+                    </span>
+                    <span class="modal__project-year">2026 — Social Media Management</span>
+                </li> -->
+                <li>
+                    <span class="modal__project-name">
+                        <img src="{% static 'images/partners/1.png' %}" alt="Ghala Golf Club Logo">
+                    </span>
+                    <span class="modal__project-year">Ghala Golf Club</span>
+                </li>
+
+                <li>
+                    <span class="modal__project-name">
+                        <img src="{% static 'images/partners/2.png' %}" alt="Mohammed Riaz & Partners LLC Logo">
+                    </span>
+                    <span class="modal__project-year">Mohammed Riaz & Partners LLC</span>
+                </li>
+
+                <li>
+                    <span class="modal__project-name">
+                        <img src="{% static 'images/partners/3.png' %}" alt="Assarain Group of Companies  Logo">
+                    </span>
+                    <span class="modal__project-year">Assarain Group of Companies </span>
+                </li>
+
+                <li>
+                    <span class="modal__project-name">
+                        <img src="{% static 'images/partners/4.png' %}" alt="Ras al Hmara Golf Club  Logo">
+                    </span>
+                    <span class="modal__project-year">Ras al Hmara Golf Club </span>
+                </li>
+
+                <li>
+                    <span class="modal__project-name">
+                        <img src="{% static 'images/partners/5.png' %}" alt="Oman Golf Assiciation  Logo">
+                    </span>
+                    <span class="modal__project-year">Oman Golf Assiciation </span>
+                </li>
+
+                <li>
+                    <span class="modal__project-name">
+                        <img src="{% static 'images/partners/6.png' %}" alt="Beaconhouse International Private School  Logo">
+                    </span>
+                    <span class="modal__project-year">Beaconhouse International Private School </span>
+                </li>
+
+
+                <li>
+                    <span class="modal__project-name">
+                        <img src="{% static 'images/partners/7.png' %}" alt="Sarooj  Logo">
+                    </span>
+                    <span class="modal__project-year">Sarooj </span>
+                </li>
+
+
+                <li>
+                    <span class="modal__project-name">
+                        <img src="{% static 'images/partners/8.png' %}" alt="Thermotech  Logo">
+                    </span>
+                    <span class="modal__project-year">Thermotech </span>
+                </li>
+
+
+                <li>
+                    <span class="modal__project-name">
+                        <img src="{% static 'images/partners/9.png' %}" alt="Glace Ice Cream  Logo">
+                    </span>
+                    <span class="modal__project-year">Glace Ice Cream </span>
+                </li>
+
+
+                <li>
+                    <span class="modal__project-name">
+                        <img src="{% static 'images/partners/10.png' %}" alt="Muscat Chips  Logo">
+                    </span>
+                    <span class="modal__project-year">Muscat Chips </span>
+                </li>
+
+
+                <li>
+                    <span class="modal__project-name">
+                        <img src="{% static 'images/partners/11.png' %}" alt="Kingsy  Logo">
+                    </span>
+                    <span class="modal__project-year">Kingsy </span>
+                </li>
+
+
+                <li>
+                    <span class="modal__project-name">
+                        <img src="{% static 'images/partners/12.png' %}" alt="Al Panel  Logo">
+                    </span>
+                    <span class="modal__project-year">Al Panel </span>
+                </li>
+
+
+                <li>
+                    <span class="modal__project-name">
+                        <img src="{% static 'images/partners/13.png' %}" alt="Al Rayan Catering  Logo">
+                    </span>
+                    <span class="modal__project-year">Al Rayan Catering </span>
+                </li>
+
+
+
+                <li>
+                    <span class="modal__project-name">
+                        <img src="{% static 'images/partners/14.png' %}" alt="Sipa  Logo">
+                    </span>
+                    <span class="modal__project-year">Sipa </span>
+                </li>
+
+
+                <li>
+                    <span class="modal__project-name">
+                        <img src="{% static 'images/partners/15.png' %}" alt="Chapter One Nuresy  Logo">
+                    </span>
+                    <span class="modal__project-year">Chapter One Nuresy </span>
+                </li>
+
+
+                <li>
+                    <span class="modal__project-name">
+                        <img src="{% static 'images/partners/16.png' %}" alt="Kitchenomiks  Logo">
+                    </span>
+                    <span class="modal__project-year">Kitchenomiks </span>
+                </li>
+
+
+
+            </ul>
+        </div>
+    </div>
+
+    <!-- About Modal -->
+    <div id="about" class="modal-overlay">
+        <a href="#" class="modal__close" aria-label="Close">&times;</a>
+        <div class="modal__content">
+            <p class="modal__label">Profile</p>
+            <h2 class="modal__heading">About<br>wsi</h2>
+            <p class="modal__text"><strong>Wide Sky International Group of Companies,</strong>originally established as Halis Han LTD in Turkey in 2013, began its journey in the field of export and import. In 2017, the company expanded its portfolio by entering the web development sector, embracing the digital evolution of business.</p>
+            <p class="modal__text">In 2023, the company rebranded in Oman as Wide Sky International (WSI), marking a new era of growth and innovation. Continuing its expansion, in 2025 WSI launched Parsa Protein in Iran, focusing on meat wholesale, demonstrating the group’s diverse and dynamic business model.</p>
+            <hr class="modal__divider">
+            <p class="modal__text"><strong>Capabilities</strong><br>Operating across three countries — Iran, Oman, and Turkey — WSI and its affiliated companies deliver services spanning multiple industries, combining traditional business expertise with cutting-edge technology. The company’s export and import activities cover Russia, Brazil, Ukraine, Iran, and Turkey, with operations in Iran and Turkey actively facilitating trade between these markets.</p>
+            <hr class="modal__divider">
+            <p class="modal__text"> In 2023, WSI reinforced its commitment to innovation by continuing operations in business development, web development, professional videography and photography, AI solutions, animation creation, marketing consultancy, marketing strategy, business development, and 3D video mapping.</a>.</p>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div id="contact" class="modal-overlay">
+        <a href="#" class="modal__close" aria-label="Close">&times;</a>
+        <div class="modal__content">
+            <p class="modal__label">Connect</p>
+            <h2 class="modal__heading">Have a project<br>in mind?</h2>
+            <p class="modal__text">We collaborate with brands to create meaningful identities, digital experiences, and visual stories. Reach out and let’s build something remarkable together.</p>
+            <hr class="modal__divider">
+            <div class="modal__contact-grid">
+                <div class="modal__contact-item">
+                    <p class="modal__contact-label">Email</p>
+                    <p class="modal__contact-value"><a href="mailto:marketing@wsigroupco.com">marketing@wsigroupco.com</a></p>
+                    <br>
+                    <p class="modal__contact-label">Location</p>
+                    <p class="modal__contact-value">Muscat, OM</p>
+                </div>
+                <!-- <div class="modal__contact-item">
+                    <p class="modal__contact-label">Phone</p>
+                    <p class="modal__contact-value"><a href="tel:+96892879318">+968 9287 9318</a></p>
+                </div> -->
+                <div class="modal__contact-item">
+                    <p class="modal__contact-label">Social</p>
+
+                    <p class="modal__contact-value social-link">
+                        <a href="https://www.instagram.com/wsi_oman/" target="_blank">
+                            <i class="fa-brands fa-instagram"></i>
+                            wsigroupco
+                        </a>
+                    </p>
+                    <br>
+
+                    <p class="modal__contact-value social-link">
+                        <a href="https://www.linkedin.com/company/wsigroupco" target="_blank">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                            wsigroupco
+                        </a>
+                    </p>
+
+                </div>
+                <!-- <div class="modal__contact-item">
+                    <p class="modal__contact-label">Location</p>
+                    <p class="modal__contact-value">Muscat, OM</p>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'js/javascript.js' %}"></script>
+</body>
+</html>
